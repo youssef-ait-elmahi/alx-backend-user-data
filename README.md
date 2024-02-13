@@ -4,7 +4,7 @@
 This project is a backend service for managing user data.
 
 ## Installation
-1. Clone the repository: `git clone https://github.com/yourusername/alx-backend-user-data.git`
+1. Clone the repository: `git clone https://github.com/youssef-ait-elmahi/alx-backend-user-data.git`
 2. Navigate to the project directory: `cd alx-backend-user-data`
 3. Install dependencies: `npm install`
 
