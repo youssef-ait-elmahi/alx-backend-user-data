@@ -18,7 +18,7 @@ def status() -> str:
 def stats() -> str:
     """ GET /api/v1/stats
     Return:
-      - the number of each objects.
+      - the number of each objects
     """
     from models.user import User
     stats = {}
@@ -33,3 +33,12 @@ def unauthorized() -> None:
       - Unauthorized error
     """
     abort(401)
+
+
+@app_views.route('/forbidden/', strict_slashes=False)
+def forbidden() -> None:
+    """GET /api/v1/forbidden
+    Return:
+      - Forbidden error
+    """
+    abort(403)
