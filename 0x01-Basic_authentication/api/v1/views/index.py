@@ -30,7 +30,7 @@ def stats() -> str:
 def unauthorized() -> None:
     """GET /api/v1/unauthorized
     Return:
-      - Unauthorized error
+      - Unauthorized error.
     """
     abort(401)
 
@@ -39,6 +39,6 @@ def unauthorized() -> None:
 def forbidden() -> None:
     """GET /api/v1/forbidden
     Return:
-      - Forbidden error
+      - Forbidden error.
     """
     abort(403)

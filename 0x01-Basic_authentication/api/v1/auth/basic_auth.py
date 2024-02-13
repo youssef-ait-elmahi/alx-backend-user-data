@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Basic authentication module"""
+""" Basic authentication module. """
 from .auth import Auth
 import base64
 import binascii
@@ -9,11 +9,11 @@ from typing import Tuple, TypeVar
 
 
 class BasicAuth(Auth):
-    """ Basic authentication class"""
+    """ Basic authentication class. """
     def extract_base64_authorization_header(
             self,
             authorization_header: str) -> str:
-        """ Extracts a Base64 string from the Authorization header"""
+        """ Extracts a Base64 string from the Authorization header. """
         if type(authorization_header) == str:
             pattern = r'Basic (?P<token>.+)'
             field_match = re.fullmatch(pattern, authorization_header.strip())
@@ -25,7 +25,7 @@ class BasicAuth(Auth):
             self,
             base64_authorization_header: str,
             ) -> str:
-        """ Decodes a Base64 string"""
+        """ Decodes a Base64 string. """
         if type(base64_authorization_header) == str:
             try:
                 res = base64.b64decode(
@@ -40,7 +40,7 @@ class BasicAuth(Auth):
             self,
             decoded_base64_authorization_header: str,
             ) -> Tuple[str, str]:
-        """ Extracts user credentials from a decoded base64 string"""
+        """ Extracts user credentials from a decoded base64 string."""
         if type(decoded_base64_authorization_header) == str:
             pattern = r'(?P<user>[^:]+):(?P<password>.+)'
             field_match = re.fullmatch(
@@ -57,7 +57,7 @@ class BasicAuth(Auth):
             self,
             user_email: str,
             user_pwd: str) -> TypeVar('User'):
-        """ Method to get a User object from credentials"""
+        """ Method to get a User object from credentials. """
         if type(user_email) == str and type(user_pwd) == str:
             try:
                 users = User.search({'email': user_email})
@@ -70,7 +70,7 @@ class BasicAuth(Auth):
         return None
 
     def current_user(self, request=None) -> TypeVar('User'):
-        """ Retrieves the User instance for a request"""
+        """ Retrieves the User instance for a request. """
         auth_header = self.authorization_header(request)
         b64_auth_token = self.extract_base64_authorization_header(auth_header)
         auth_token = self.decode_base64_authorization_header(b64_auth_token)
